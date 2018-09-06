@@ -2,33 +2,40 @@ import React from "react";
 import { inject, observer } from "mobx-react";
 import { Switch, Route, withRouter } from "react-router-dom";
 
-@inject("commonStore")
+import Header from "./Header";
+import Login from "./Login";
+
+@inject("commonStore", "userStore")
 @withRouter
 @observer
 export default class App extends React.Component {
-  //   componentWillMount() {
-  //     const { commonStore } = this.props;
-  //     setTimeout(function() {
-  //       commonStore.setAppLoaded();
-  //     }, 2000);
-  //   }
+  componentWillMount() {
+    const { commonStore } = this.props;
+    if (!commonStore.token) {
+      commonStore.setAppLoaded();
+    }
+  }
+
+  componentDidMount() {
+    const { commonStore, userStore } = this.props;
+    if (commonStore.token) {
+      userStore.pullUser().finally(() => commonStore.setAppLoaded());
+    }
+  }
 
   render() {
     const { commonStore } = this.props;
-    return (
-      <div>
-        <div> Text: {commonStore.appLoaded ? "Loaded" : "Not Ready"}</div>
+    if (commonStore.appLoaded) {
+      return (
         <div>
-          <button
-            type="button"
-            onClick={() => {
-              commonStore.setAppLoaded();
-            }}
-          >
-            Toggle State With Action
-          </button>
+          <Header />
+          <Switch>
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Login} />
+          </Switch>
         </div>
-      </div>
-    );
+      );
+    }
+    return <Header />;
   }
 }
