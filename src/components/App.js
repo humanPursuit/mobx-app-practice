@@ -4,6 +4,8 @@ import { Switch, Route, withRouter } from "react-router-dom";
 
 import Header from "./Header";
 import Login from "./Login";
+import Register from "./Login";
+import Editor from "./Editor";
 
 @inject("commonStore", "userStore")
 @withRouter
@@ -31,7 +33,8 @@ export default class App extends React.Component {
           <Header />
           <Switch>
             <Route path="/login" component={Login} />
-            <Route path="/register" component={Login} />
+            <Route path="/register" component={Register} />
+            <Route path="/editor" component={Editor} />
           </Switch>
         </div>
       );

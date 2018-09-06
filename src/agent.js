@@ -1,5 +1,7 @@
 import superagentPromise from "superagent-promise";
 import _superagent from "superagent";
+import authStore from "./stores/authStore";
+import commonStore from "./stores/commonStore";
 
 const superagent = superagentPromise(_superagent, global.Promise);
 
@@ -10,6 +12,7 @@ const encode = encodeURIComponent;
 const handleErrors = err => {
   if (err && err.response && err.response.status === 401) {
     // TODO: logout
+    authStore.logout();
   }
   return err;
 };
@@ -18,6 +21,9 @@ const responseBody = res => res.body;
 
 const tokenPlugin = req => {
   // TODO: update request-header token
+  if (commonStore.token) {
+    req.set("authorization", `Token ${commonStore.token}`);
+  }
 };
 
 const requests = {
