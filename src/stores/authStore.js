@@ -1,13 +1,13 @@
-import { observavle, action } from "mobx";
+import { observable, action } from "mobx";
 import agent from "../agent";
 
 import userStore from "./userStore";
 import commonStore from "./commonStore";
 
 class AuthStore {
-  @observavle
+  @observable
   inProgress = false;
-  @observavle
+  @observable
   errors = undefined;
 
   @observable
@@ -50,7 +50,7 @@ class AuthStore {
         action(err => {
           this.errors =
             err.response && err.response.body && err.response.body.errors;
-          throw error;
+          throw err;
         })
       )
       .finally(
@@ -75,7 +75,7 @@ class AuthStore {
         action(err => {
           this.errors =
             err.response && err.response.body && err.response.body.errors;
-          throw error;
+          throw err;
         })
       )
       .finally(

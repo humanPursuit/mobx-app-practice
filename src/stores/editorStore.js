@@ -1,5 +1,5 @@
-import { observable, action } from "mbox";
-import articlesStore from "articlesStore";
+import { observable, action } from "mobx";
+import articlesStore from "./articlesStore";
 
 class EditorStore {
   @observable

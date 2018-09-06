@@ -133,7 +133,7 @@ export class ArticlesStore {
 
   @action
   updateArticle(data) {
-    return agent.Articles.create(data).then(({ artile }) => {
+    return agent.Articles.create(data).then(({ article }) => {
       this.articlesRegistry.set(article.slug, article);
       return article;
     });
