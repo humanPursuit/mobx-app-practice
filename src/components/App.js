@@ -4,6 +4,7 @@ import { Switch, Route, withRouter } from "react-router-dom";
 
 import PrivateRoute from "./PrivateRoute";
 import Header from "./Header";
+import Home from "./Home";
 import Login from "./Login";
 import Register from "./Register";
 import Editor from "./Editor";
@@ -39,7 +40,11 @@ export default class App extends React.Component {
             <Route path="/register" component={Register} />
             <Route path="/editor/:slug?" component={Editor} />
             <PrivateRoute path="/settings" component={Settings} />
-            <Route path="/@:username" component={Profile} />
+            <Route
+              path="/(@:username|@:username/favorites)"
+              component={Profile}
+            />
+            <Route path="/" component={Home} />
           </Switch>
         </div>
       );

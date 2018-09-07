@@ -26,7 +26,7 @@ class CommonStore {
     this.isLoadingTags = true;
     return agent.Tags.getAll()
       .then(
-        action(tags => {
+        action(({ tags }) => {
           this.tags = tags.map(t => t.toLowerCase());
         })
       )
@@ -45,6 +45,7 @@ class CommonStore {
 }
 
 const decoratedStore = decorate(CommonStore, {
+  app: observable,
   appName: observable,
   token: observable,
   appLoaded: observable,
