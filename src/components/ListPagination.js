@@ -5,7 +5,10 @@ const ListPagination = props => {
     return null;
   }
 
-  const range = new Array(props.totalPageCount);
+  const range = [];
+  for (var i = 0; i < props.totalPageCount; i++) {
+    range.push(i);
+  }
 
   return (
     <nav>

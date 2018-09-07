@@ -15,10 +15,10 @@ const errorStyle = {
   backgroundColor: "rgba(240, 45, 45, .1)"
 };
 
-export default function RedError() {
+export default function RedError(props) {
   return (
     <div style={wrapperStyle}>
-      <div style={errorStyle}>{this.props.message}</div>
+      <div style={errorStyle}>{props.message}</div>
     </div>
   );
 }

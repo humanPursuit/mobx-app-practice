@@ -16,9 +16,11 @@ class ProfileStore {
           this.profile = profile;
         })
       )
-      .finally(() => {
-        this.isLoadingProfile = false;
-      });
+      .finally(
+        action(() => {
+          this.isLoadingProfile = false;
+        })
+      );
   }
 
   @action

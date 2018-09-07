@@ -5,7 +5,7 @@ import { inject, observer } from "mobx-react";
 const FAVORITED_CLASS = "btn btn-sm btn-primary";
 const NOT_FAVORITED_CLASS = "btn btn-sm btn-outline-primary";
 
-@inject("articleStore")
+@inject("articlesStore")
 @observer
 export default class ArticlePreview extends React.Component {
   render() {
@@ -42,7 +42,7 @@ export default class ArticlePreview extends React.Component {
           <p>{article.description}</p>
           <span>Read More...</span>
           <ul className="tag-list">
-            {articles.tagList.map(tag => (
+            {article.tagList.map(tag => (
               <li className="tag-default tag-pill tag-outline" key={tag}>
                 {tag}
               </li>

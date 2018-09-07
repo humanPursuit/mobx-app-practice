@@ -65,7 +65,6 @@ export default class Register extends React.Component {
                 </fieldset>
 
                 <button
-                  type="button"
                   className="btn btn-lg btn-primary pull-xs-right"
                   type="submit"
                   disabled={inProgress}
