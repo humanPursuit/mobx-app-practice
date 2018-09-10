@@ -30,9 +30,11 @@ class CommonStore {
           this.tags = tags.map(t => t.toLowerCase());
         })
       )
-      .finally(() => {
-        this.isLoadingTags = false;
-      });
+      .finally(
+        action(() => {
+          this.isLoadingTags = false;
+        })
+      );
   }
 
   setToken(token) {

@@ -70,7 +70,7 @@ const limit = (count, p) => `limit=${count}&offset=${p ? p * count : 0}`;
 const omitSlug = article => Object.assign({}, article, { slug: undefined });
 
 const Articles = {
-  all: (page, lim = 10) => requests.get(`/articles?${limit(page, lim)}`),
+  all: (page, lim = 10) => requests.get(`/articles?${limit(lim, page)}`),
   byAuthor: (author, page) =>
     requests.get(`/articles?author=${encode(author)}&${limit(5, page)}`),
   byTag: (tag, page, lim = 10) =>

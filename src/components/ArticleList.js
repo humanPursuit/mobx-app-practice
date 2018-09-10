@@ -4,11 +4,11 @@ import LoadingSpinner from "./ListPagination";
 import React from "react";
 
 const ArticleList = props => {
-  if (props.loading && !props.articles.length) {
+  if (props.loading && !props.articlesLength) {
     return <LoadingSpinner />;
   }
 
-  if (!props.articles.length) {
+  if (!props.articlesLength) {
     return <div className="article-preview">No Articles</div>;
   }
 

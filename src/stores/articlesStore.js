@@ -17,11 +17,16 @@ export class ArticlesStore {
 
   @computed
   get articles() {
-    return this.articlesRegistry.values();
+    return [...this.articlesRegistry.values()];
+  }
+
+  @computed
+  get articlesLength() {
+    return this.articlesRegistry.size;
   }
 
   clear() {
-    this.articles.clear();
+    this.articlesRegistry.clear();
     this.page = 0;
   }
 
@@ -63,7 +68,7 @@ export class ArticlesStore {
         articles.forEach(article =>
           this.articlesRegistry.set(article.slug, article)
         );
-        this.totalPagesCount = articlesCount;
+        this.totalPagesCount = Math.ceil(articlesCount / LIMIT);
       })
     );
   }

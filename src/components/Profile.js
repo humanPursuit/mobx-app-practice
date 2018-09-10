@@ -154,6 +154,7 @@ export default class Profile extends React.Component {
 
                 <ArticleList
                   articles={articlesStore.articles}
+                  articlesLength={articlesStore.articlesLength}
                   totalPagesCount={articlesStore.totalPagesCount}
                   onSetPage={this.handleSetPage}
                   loading={articlesStore.isLoading}

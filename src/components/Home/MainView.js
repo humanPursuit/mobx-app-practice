@@ -107,6 +107,7 @@ export default class MainView extends React.Component {
     const { currentUser } = this.props.userStore;
     const {
       articles,
+      articlesLength,
       isLoading,
       page,
       totalPagesCount
@@ -124,6 +125,7 @@ export default class MainView extends React.Component {
 
         <ArticleList
           articles={articles}
+          articlesLength={articlesLength}
           loading={isLoading}
           totalPagesCount={totalPagesCount}
           currentPage={page}
